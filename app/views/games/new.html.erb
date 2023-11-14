@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row justify-content-center text-center mt-4">
+  <h1 class="mb-3">New Game</h1>
+    <div class="row d-flex justify-content-center mb-4 mt-4">
+      <% @letters.each do |letter| %>
+      <p class="col-1 "><%=letter%></p>
+      <%end %>
+    </div>
+  </div>
+    <form class="row g-3 justify-content-center" action="/score" method="post" data-turbo="false">
+    <div class="col-auto">
+      <input type="text" class="form-control" name="answer" placeholder="Type your word here">
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-3">Go!</button>
+    </div>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+  </form>
+
+</div>
